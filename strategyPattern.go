@@ -9,21 +9,21 @@ type CarBuyingStrategy interface {
 	BuyCar() string
 }
 
-// SUVStrategy is a concrete strategy for buying an SUV.
+// SUVStrategy-buying an SUV.
 type SUVStrategy struct{}
 
 func (s *SUVStrategy) BuyCar() string {
 	return "Buying an SUV"
 }
 
-// SedanStrategy is a concrete strategy for buying a sedan.
+// SedanStrategy-buying a sedan.
 type SedanStrategy struct{}
 
 func (s *SedanStrategy) BuyCar() string {
 	return "Buying a sedan"
 }
 
-// HatchbackStrategy is a concrete strategy for buying a hatchback.
+// HatchbackStrategy-buying a hatchback.
 type HatchbackStrategy struct{}
 
 func (h *HatchbackStrategy) BuyCar() string {
@@ -45,17 +45,8 @@ func (c *CarBuyer) BuyCar() string {
 
 func main() {
 	buyer := &CarBuyer{}
-
-	// Buying an SUV
-	buyer.SetStrategy(&SUVStrategy{})
-	fmt.Println(buyer.BuyCar())
-
 	// Buying a sedan
-	buyer.SetStrategy(&SedanStrategy{})
-	fmt.Println(buyer.BuyCar())
-
-	// Buying a hatchback
-	buyer.SetStrategy(&HatchbackStrategy{})
 	
+	buyer.SetStrategy(&SedanStrategy{})
 	fmt.Println(buyer.BuyCar())
 }
