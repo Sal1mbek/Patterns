@@ -56,5 +56,6 @@ func main() {
 
 	// Buying a hatchback
 	buyer.SetStrategy(&HatchbackStrategy{})
+	
 	fmt.Println(buyer.BuyCar())
 }
