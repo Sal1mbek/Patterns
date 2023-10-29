@@ -1,4 +1,4 @@
-package main
+package strategy
 
 import (
 	"fmt"
@@ -16,6 +16,27 @@ func (s *SUVStrategy) BuyCar() string {
 	return "Buying an SUV"
 }
 
+// CrossoverStrategy-buying an SUV.
+type CrossoverStrategy struct{}
+
+func (c *CrossoverStrategy) BuyCar() string {
+	return "Buying an crossover"
+}
+
+// WagonStrategy-buying a hatchback.
+type WagonStrategy struct{}
+
+func (w *WagonStrategy) BuyCar() string {
+	return "Buying a wagon car"
+}
+
+// MinivanStrategy-buying a hatchback.
+type MinivanStrategy struct{}
+
+func (m *MinivanStrategy) BuyCar() string {
+	return "Buying a minivan"
+}
+
 // SedanStrategy-buying a sedan.
 type SedanStrategy struct{}
 
@@ -28,6 +49,13 @@ type HatchbackStrategy struct{}
 
 func (h *HatchbackStrategy) BuyCar() string {
 	return "Buying a hatchback"
+}
+
+// PickUPStrategy-buying a hatchback.
+type PickUPStrategy struct{}
+
+func (p *PickUPStrategy) BuyCar() string {
+	return "Buying a Pick-UP"
 }
 
 // CarBuyer is the context that uses the car buying strategy.
@@ -43,10 +71,10 @@ func (c *CarBuyer) BuyCar() string {
 	return c.strategy.BuyCar()
 }
 
-func main() {
+/* func main() {
 	buyer := &CarBuyer{}
 	// Buying a sedan
 	
 	buyer.SetStrategy(&SedanStrategy{})
 	fmt.Println(buyer.BuyCar())
-}
+} */

@@ -1,4 +1,4 @@
-package main
+package observer
 
 import (
 	"fmt"
@@ -51,7 +51,7 @@ func (s *Subject) NotifyObservers(message string) {
 	}
 }
 
-func main() {
+/* func main() {
 	
 	// Create car dealerships as observers
 	dealer1 := &ConcreteObserver{name: "Astana Motors"}
@@ -74,4 +74,4 @@ func main() {
 	// Car buyer makes another purchase and notifies remaining dealership
 	message = "Just bought a sedan!"
 	salimbek.NotifyObservers(message)
-}
+} */

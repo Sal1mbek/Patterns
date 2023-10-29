@@ -1,4 +1,4 @@
-package main
+package factory
 
 import "fmt"
 
@@ -54,7 +54,7 @@ func (cf HybridCarFactory) CreateCar() Car {
 	return &HybridCar{}
 }
 
-func main() {
+/* func main() {
 	// Create an engine car using the EngineCarFactory
 	Dodge := EngineCarFactory{}
 	RAM_trx := Dodge.CreateCar()
@@ -69,4 +69,4 @@ func main() {
 	Fisker := HybridCarFactory{}
 	Carma := Fisker.CreateCar()
 	Carma.Drive()
-}
+} */

@@ -1,4 +1,4 @@
-package main
+package decorator
 
 import "fmt"
 
@@ -111,7 +111,24 @@ func (a *AdvancedAudioDecorator) GetCost() float64 {
 	return a.car.GetCost() + 800.0
 }
 
-func main() {
+// AirConditioner is a concrete decorator for adding a air conditioner to a car.
+type AirConditionerDecorator struct {
+	CarDecorator
+}
+
+func NewAirConditionerDecorator(car Car) *AirConditionerDecorator {
+	return &AirConditionerDecorator{CarDecorator{car}}
+}
+
+func (a *AirConditionerDecorator) GetDescription() string {
+	return a.car.GetDescription() + " with Air conditioner"
+}
+
+func (a *AirConditionerDecorator) GetCost() float64 {
+	return a.car.GetCost() + 500.0
+}
+
+/* func main() {
 	// Create different car types
 	TLC_300 := NewSUV()
 	Lancer := NewSedan()
@@ -128,4 +145,4 @@ func main() {
 	fmt.Printf("Car: %s\nPrice: $%.2f\n\n", hatchbackWithSunroof.GetDescription(), hatchbackWithSunroof.GetCost())
 	fmt.Printf("Car: %s\nPrice: $%.2f\n\n", sedanWithAdvancedAudio.GetDescription(), sedanWithAdvancedAudio.GetCost())
 	fmt.Printf("Car: %s\nPrice: $%.2f\n\n", suvWithBoth.GetDescription(), suvWithBoth.GetCost())
-}
+} */

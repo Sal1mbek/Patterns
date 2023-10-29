@@ -1,4 +1,4 @@
-package main
+package singleton
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func (cf *CarFactory) CreateCar(carType string) {
 }
 
 
-func main() {
+/* func main() {
 	carFactory := getInstance()
 
 	carFactory.CreateCar("SUV")
@@ -35,4 +35,4 @@ func main() {
 	anotherCarFactory := getInstance()
 
 	anotherCarFactory.CreateCar("Hatchback")
-}
+} */

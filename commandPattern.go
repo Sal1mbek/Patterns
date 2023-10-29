@@ -1,4 +1,4 @@
-package main
+package command
 
 import "fmt"
 
@@ -71,7 +71,7 @@ func (rc *RemoteControl) CloseCar() {
 	rc.closeCommand.Execute()
 }
 
-func main() {
+/* func main() {
 	car := &Car{}
 	openCommand := &OpenCarCommand{car}
 	closeCommand := &CloseCarCommand{car}
@@ -85,4 +85,4 @@ func main() {
 
 	// Можно использовать отмену (Undo)
 	remoteControl.closeCommand.Undo()
-}
+} */

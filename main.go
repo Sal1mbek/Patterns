@@ -1,65 +1,25 @@
 package main
 
-import "fmt"
-
-type Payer interface {
-	Pay(int) error
-} 
-
-type Wallet struct {
-	Cash int
-}
-
-func (w *Wallet) Pay(amount int) error {
-	if w.Cash < amount {
-		return fmt.Errorf("нехватает денег в кошельке")
-	}
-	w.Cash = w.Cash - amount
-	return nil	
-}
-
-type Card struct {
-	Balance int
-	Owner string
-	ValidUntil string
-	CVV string
-	Number string
-}
-
-func (c *Card) Pay(amount int) error {
-	if c.Balance < amount {
-		return fmt.Errorf("нехватает денег на карте")
-	}
-	c.Balance = c.Balance - amount
-	return nil	
-}
-
-// Program to an interface not an implementation
-// OCP - open for extenstion close for modifications
-func Buy(p Payer) {
-	switch p.(type) {
-	case *Wallet:
-		fmt.Println("Оплата наличными.")
-	case *Card:
-		plasticCard := p.(*Card)
-		fmt.Printf("Вставляйте карту, %v \n", plasticCard.Owner)
-	default:
-		fmt.Println("Что то новое.")
-	}
-	err := p.Pay(10)
-	if err!=nil {
-		panic(err)
-	}
-
-	fmt.Printf("Спасибо за покупку через %T \n", p)
-}
-
+import (
+	"fmt"
+	"singleton" // Import the 'singleton' package
+)
 
 func main() {
-	myWallet := Wallet{100}
-	myCard := Card{Balance: 100, Owner: "Bob Smith"}
+	// Call 'getInstance' from the 'singleton' package to get a single instance of 'CarFactory'
+	carFactory := singleton.GetCarFactory()
 
-	Buy(&myWallet)
-	Buy(&myCard)
+	// Use the 'CarFactory' instance to create cars
+	carFactory.CreateCar("SUV")
+	carFactory.CreateCar("Sedan")
+	carFactory.CreateCar("Hatchback")
+	carFactory.CreateCar("Crossover")
+
+	// You can also access the same 'CarFactory' instance elsewhere in your 'main' or other packages
+	// This demonstrates that the Singleton pattern ensures a single instance across your application.
+
+	// Create more cars
+	carFactory.CreateCar("Wagon")
+	carFactory.CreateCar("Minivan")
+	carFactory.CreateCar("Pick-UP")
 }
-
