@@ -2,23 +2,28 @@ package main
 
 import (
 	"fmt"
-	"singleton" // Import the 'singleton' package
 )
 
 func main() {
-	// Call 'getInstance' from the 'singleton' package to get a single instance of 'CarFactory'
-	carFactory := singleton.GetCarFactory()
+	
+	var name string
+	fmt.Println("Как тебя зовут?")
+	fmt.Scanf("%s\n", &name)
+ 
+	var age int
+	fmt.Println("Сколько тебе лет?")
+	fmt.Scanf("%d\n", &age)
+ 
+	fmt.Printf("Привет, %s, твой возраст - %d\n", name, age)
 
-	// Use the 'CarFactory' instance to create cars
+	fmt.Println("Hello user!!!")
+		
+	carFactory := getInstance()
+
 	carFactory.CreateCar("SUV")
 	carFactory.CreateCar("Sedan")
 	carFactory.CreateCar("Hatchback")
 	carFactory.CreateCar("Crossover")
-
-	// You can also access the same 'CarFactory' instance elsewhere in your 'main' or other packages
-	// This demonstrates that the Singleton pattern ensures a single instance across your application.
-
-	// Create more cars
 	carFactory.CreateCar("Wagon")
 	carFactory.CreateCar("Minivan")
 	carFactory.CreateCar("Pick-UP")

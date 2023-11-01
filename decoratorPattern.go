@@ -1,6 +1,4 @@
-package decorator
-
-import "fmt"
+package main
 
 // Car represents the base component interface.
 type Car interface {

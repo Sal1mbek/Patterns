@@ -1,4 +1,4 @@
-package command
+package main
 
 import "fmt"
 
@@ -10,7 +10,7 @@ type CarCommand interface {
 
 // OpenCarCommand implements the CarCommand interface.
 type OpenCarCommand struct {
-	car *Car
+	car *Cars
 }
 
 func (c *OpenCarCommand) Execute() {
@@ -23,7 +23,7 @@ func (c *OpenCarCommand) Undo() {
 
 // CloseCarCommand implements the CarCommand interface.
 type CloseCarCommand struct {
-	car *Car
+	car *Cars
 }
 
 func (c *CloseCarCommand) Execute() {
@@ -35,16 +35,16 @@ func (c *CloseCarCommand) Undo() {
 }
 
 // Receiver implementation.
-type Car struct {
+type Cars struct {
 	isOpen bool
 }
 
-func (c *Car) Open() {
+func (c *Cars) Open() {
 	c.isOpen = true
 	fmt.Println("Car is open")
 }
 
-func (c *Car) Close() {
+func (c *Cars) Close() {
 	c.isOpen = false
 	fmt.Println("Car is closed")
 }

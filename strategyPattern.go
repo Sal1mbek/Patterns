@@ -1,8 +1,5 @@
-package strategy
+package main
 
-import (
-	"fmt"
-)
 
 // CarBuyingStrategy defines the strategy interface for buying a car.
 type CarBuyingStrategy interface {

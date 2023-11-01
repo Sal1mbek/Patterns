@@ -1,9 +1,9 @@
-package factory
+package main
 
 import "fmt"
 
 // Car is the interface for all types of cars.
-type Car interface {
+type FactoryCar interface {
 	Drive()
 }
 
@@ -30,27 +30,27 @@ func (c *HybridCar) Drive() {
 
 // CarFactory is the factory interface for creating cars.
 type CarFactory interface {
-	CreateCar() Car
+	CreateCar() FactoryCar
 }
 
 // EngineCarFactory is a concrete factory that creates engine cars.
 type EngineCarFactory struct{}
 
-func (cf EngineCarFactory) CreateCar() Car {
+func (cf EngineCarFactory) CreateCar() FactoryCar {
 	return &EngineCar{}
 }
 
 // ElectricCarFactory is a concrete factory that creates electric cars.
 type ElectricCarFactory struct{}
 
-func (cf ElectricCarFactory) CreateCar() Car {
+func (cf ElectricCarFactory) CreateCar() FactoryCar {
 	return &ElectricCar{}
 }
 
 // HybridCarFactory is a concrete factory that creates hybrid cars.
 type HybridCarFactory struct{}
 
-func (cf HybridCarFactory) CreateCar() Car {
+func (cf HybridCarFactory) CreateCar() FactoryCar {
 	return &HybridCar{}
 }
 

@@ -1,4 +1,4 @@
-package singleton
+package main
 
 import (
 	"fmt"
@@ -6,21 +6,21 @@ import (
 )
 
 // CarFactory represents the Singleton using the lazy initialization approach.
-type CarFactory struct {
+type CarsFactory struct {
 	carsCreated int
 }
 
-var instance *CarFactory
+var instance *CarsFactory
 var once sync.Once
 
-func getInstance() *CarFactory {
+func getInstance() *CarsFactory {
 	once.Do(func() {
-		instance = &CarFactory{}
+		instance = &CarsFactory{}
 	})
 	return instance
 }
 
-func (cf *CarFactory) CreateCar(carType string) {
+func (cf *CarsFactory) CreateCar(carType string) {
 	cf.carsCreated++
 	fmt.Printf("Created %s car #%d\n", carType, cf.carsCreated)
 }
@@ -35,4 +35,5 @@ func (cf *CarFactory) CreateCar(carType string) {
 	anotherCarFactory := getInstance()
 
 	anotherCarFactory.CreateCar("Hatchback")
-} */
+}
+ */
