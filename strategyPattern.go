@@ -13,21 +13,21 @@ func (s *SUVStrategy) BuyCar() string {
 	return "Buying an SUV"
 }
 
-// CrossoverStrategy-buying an SUV.
+// CrossoverStrategy-buying an crossover.
 type CrossoverStrategy struct{}
 
 func (c *CrossoverStrategy) BuyCar() string {
 	return "Buying an crossover"
 }
 
-// WagonStrategy-buying a hatchback.
+// WagonStrategy-buying a wagon.
 type WagonStrategy struct{}
 
 func (w *WagonStrategy) BuyCar() string {
 	return "Buying a wagon car"
 }
 
-// MinivanStrategy-buying a hatchback.
+// MinivanStrategy-buying a minivan.
 type MinivanStrategy struct{}
 
 func (m *MinivanStrategy) BuyCar() string {
@@ -48,7 +48,7 @@ func (h *HatchbackStrategy) BuyCar() string {
 	return "Buying a hatchback"
 }
 
-// PickUPStrategy-buying a hatchback.
+// PickUPStrategy-buying a pick-UP.
 type PickUPStrategy struct{}
 
 func (p *PickUPStrategy) BuyCar() string {

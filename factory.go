@@ -11,21 +11,21 @@ type FactoryCar interface {
 type EngineCar struct{}
 
 func (c *EngineCar) Drive() {
-	fmt.Println("Driving an engine car")
+	fmt.Println("You are going to drive an engine car")
 }
 
 // ElectricCar is a concrete type that implements the Car interface.
 type ElectricCar struct{}
 
 func (c *ElectricCar) Drive() {
-	fmt.Println("Driving an electric car")
+	fmt.Println("You are going to drive an electric car")
 }
 
 // HybridCar is a concrete type that implements the Car interface.
 type HybridCar struct{}
 
 func (c *HybridCar) Drive() {
-	fmt.Println("Driving a hybrid car")
+	fmt.Println("You are going to drive a hybrid car")
 }
 
 // CarFactory is the factory interface for creating cars.

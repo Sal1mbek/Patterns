@@ -34,6 +34,48 @@ func NewSUV() *SUV {
 	}
 }
 
+// Сrossover is a concrete component representing an crossover.
+type Crossover struct {
+	BaseCar
+}
+
+func NewCrossover() *Crossover {
+	return &Crossover{
+		BaseCar: BaseCar{
+			description: "Crossover",
+			cost:        25000.0,
+		},
+	}
+}
+
+// Wagon is a concrete component representing a wagon.
+type Wagon struct {
+	BaseCar
+}
+
+func NewWagon() *Wagon {
+	return &Wagon{
+		BaseCar: BaseCar{
+			description: "Wagon",
+			cost:        25000.0,
+		},
+	}
+}
+
+// Minivan is a concrete component representing a minivan.
+type Minivan struct {
+	BaseCar
+}
+
+func NewMinivan() *Minivan {
+	return &Minivan{
+		BaseCar: BaseCar{
+			description: "Minivan",
+			cost:        25000.0,
+		},
+	}
+}
+
 // Sedan is a concrete component representing a sedan.
 type Sedan struct {
 	BaseCar
@@ -57,6 +99,20 @@ func NewHatchback() *Hatchback {
 	return &Hatchback{
 		BaseCar: BaseCar{
 			description: "Hatchback",
+			cost:        18000.0,
+		},
+	}
+}
+
+// PickUp is a concrete component representing a PickUp.
+type PickUp struct {
+	BaseCar
+}
+
+func NewPickUp() *PickUp {
+	return &PickUp{
+		BaseCar: BaseCar{
+			description: "Pick-Up",
 			cost:        18000.0,
 		},
 	}
