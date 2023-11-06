@@ -29,7 +29,7 @@ func NewSUV() *SUV {
 	return &SUV{
 		BaseCar: BaseCar{
 			description: "SUV",
-			cost:        25000.0,
+			cost:        100000.0,
 		},
 	}
 }
@@ -43,7 +43,7 @@ func NewCrossover() *Crossover {
 	return &Crossover{
 		BaseCar: BaseCar{
 			description: "Crossover",
-			cost:        25000.0,
+			cost:        50000.0,
 		},
 	}
 }
@@ -57,7 +57,7 @@ func NewWagon() *Wagon {
 	return &Wagon{
 		BaseCar: BaseCar{
 			description: "Wagon",
-			cost:        25000.0,
+			cost:        45000.0,
 		},
 	}
 }
@@ -71,7 +71,7 @@ func NewMinivan() *Minivan {
 	return &Minivan{
 		BaseCar: BaseCar{
 			description: "Minivan",
-			cost:        25000.0,
+			cost:        90000.0,
 		},
 	}
 }
@@ -85,7 +85,7 @@ func NewSedan() *Sedan {
 	return &Sedan{
 		BaseCar: BaseCar{
 			description: "Sedan",
-			cost:        20000.0,
+			cost:        60000.0,
 		},
 	}
 }
@@ -99,7 +99,7 @@ func NewHatchback() *Hatchback {
 	return &Hatchback{
 		BaseCar: BaseCar{
 			description: "Hatchback",
-			cost:        18000.0,
+			cost:        25000.0,
 		},
 	}
 }
@@ -113,7 +113,7 @@ func NewPickUp() *PickUp {
 	return &PickUp{
 		BaseCar: BaseCar{
 			description: "Pick-Up",
-			cost:        18000.0,
+			cost:        75000.0,
 		},
 	}
 }
@@ -158,7 +158,7 @@ func NewAdvancedAudioDecorator(car Car) *AdvancedAudioDecorator {
 }
 
 func (a *AdvancedAudioDecorator) GetDescription() string {
-	return a.car.GetDescription() + " with Advanced Audio"
+	return a.car.GetDescription() + " with Advanced Audio system"
 }
 
 func (a *AdvancedAudioDecorator) GetCost() float64 {
