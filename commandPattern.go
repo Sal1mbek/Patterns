@@ -2,77 +2,61 @@ package main
 
 import "fmt"
 
-// CarCommand provides a command interface.
+// CarCommand is the command interface.
 type CarCommand interface {
 	Execute()
-	Undo()
 }
 
-// OpenCarCommand implements the CarCommand interface.
-type OpenCarCommand struct {
-	car *Cars
-}
-
-func (c *OpenCarCommand) Execute() {
-	c.car.Open()
-}
-
-func (c *OpenCarCommand) Undo() {
-	c.car.Close()
-}
-
-// CloseCarCommand implements the CarCommand interface.
-type CloseCarCommand struct {
-	car *Cars
-}
-
-func (c *CloseCarCommand) Execute() {
-	c.car.Close()
-}
-
-func (c *CloseCarCommand) Undo() {
-	c.car.Open()
-}
-
-// Receiver implementation.
+// Cars represents the receiver.
 type Cars struct {
 	isOpen bool
 }
 
-func (c *Cars) Open() {
+func (c *Cars) Open(key string) {
 	c.isOpen = true
-	fmt.Println("Car is open")
+	fmt.Printf("Car is open with %s\n", key)
 }
 
-func (c *Cars) Close() {
+func (c *Cars) Close(key string) {
 	c.isOpen = false
-	fmt.Println("Car is closed")
+	fmt.Printf("Car is closed with %s\n", key)
 }
 
-// Invoker implementation.
-type RemoteControl struct {
-	openCommand CarCommand
-	closeCommand CarCommand
+// OpenCarCommand is a concrete command for opening the car.
+type OpenCarCommand struct {
+	carName string
+	car     *Cars
 }
 
-func (rc *RemoteControl) SetOpenCommand(command CarCommand) {
-	rc.openCommand = command
+func (o *OpenCarCommand) Execute() {
+	o.car.Open(o.carName)
 }
 
-func (rc *RemoteControl) SetCloseCommand(command CarCommand) {
-	rc.closeCommand = command
+// CloseCarCommand is a concrete command for closing the car.
+type CloseCarCommand struct {
+	carName string
+	car     *Cars
 }
 
-func (rc *RemoteControl) OpenCar() {
-	rc.openCommand.Execute()
+func (c *CloseCarCommand) Execute() {
+	c.car.Close(c.carName)
 }
 
-func (rc *RemoteControl) CloseCar() {
-	rc.closeCommand.Execute()
+// CarInvoker represents the car invoker.
+type CarInvoker struct {
+	command CarCommand
+}
+
+func (c *CarInvoker) SetCommand(command CarCommand) {
+	c.command = command
+}
+
+func (c *CarInvoker) ExecuteCommand() {
+	c.command.Execute()
 }
 
 /* func main() {
-	car := &Car{}
+	car := &Cars{}
 	openCommand := &OpenCarCommand{car}
 	closeCommand := &CloseCarCommand{car}
 
