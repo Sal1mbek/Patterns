@@ -3,90 +3,7 @@ package main
 import (
   	"fmt"
 )
-// Using decorator pattern to add optional features to your car
-func decorator(myCar Car, choice int, cash float64) {
-	switch choice {
-	case 1:
-		myCarWithSunroof := NewSunroofDecorator(myCar)
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithSunroof.GetDescription(), myCarWithSunroof.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithSunroof.GetCost())	
-	case 2:
-		myCarWithAdvancedAudio := NewAdvancedAudioDecorator(myCar)
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithAdvancedAudio.GetDescription(), myCarWithAdvancedAudio.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithAdvancedAudio.GetCost())	
-	case 3:
-		myCarWithAirConditioner := NewAirConditionerDecorator(myCar)
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithAirConditioner.GetDescription(), myCarWithAirConditioner.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithAirConditioner.GetCost())	
-	case 4:
-		myCarWith_Sunroof_and_AdvancedAudio := NewAdvancedAudioDecorator(NewSunroofDecorator(myCar))
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_Sunroof_and_AdvancedAudio.GetDescription(), myCarWith_Sunroof_and_AdvancedAudio.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_Sunroof_and_AdvancedAudio.GetCost())	
-	case 5:
-		myCarWith_Sunroof_and_AirConditioner := NewSunroofDecorator(NewAirConditionerDecorator(myCar))
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_Sunroof_and_AirConditioner.GetDescription(), myCarWith_Sunroof_and_AirConditioner.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_Sunroof_and_AirConditioner.GetCost())	
-	case 6:
-		myCarWith_AdvancedAudio_and_AirConditioner := NewAdvancedAudioDecorator(NewAirConditionerDecorator(myCar))
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_AdvancedAudio_and_AirConditioner.GetDescription(), myCarWith_AdvancedAudio_and_AirConditioner.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_AdvancedAudio_and_AirConditioner.GetCost())	
-	case 7:
-		myCarWith_allOptions := NewSunroofDecorator(NewAdvancedAudioDecorator(NewAirConditionerDecorator(myCar)))
-		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_allOptions.GetDescription(), myCarWith_allOptions.GetCost())
-		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_allOptions.GetCost())	
-	default:
-		fmt.Println("undefined")			
-	}
-}
 
-// Choosing heart(двигатель) of your car. Using Factory method
-func chooseOfEngine(variant int){
-	switch variant {
-	case 1:
-		dvsFactory := EngineCarFactory{}
-		dvsCar := dvsFactory.CreateCar()
-		dvsCar.Drive()
-	case 2:
-		powerbankFactory := ElectricCarFactory{}
-		powerbank := powerbankFactory.CreateCar()
-		powerbank.Drive()
-	case 3:
-		hybridFactory := HybridCarFactory{}
-		hybridCar := hybridFactory.CreateCar()
-		hybridCar.Drive()
-	default:
-		fmt.Println("undefined")
-	}
-}
-// Using command pattern
-func InteractWithCar(userChoice int) {
-	// Create the receiver
-	car := &Cars{}
-
-	var carName string
-
-	switch userChoice {
-	case 1, 3:
-		carName = "Mechanical Key"
-	case 2, 4:
-		carName = "Remote Key"
-	}
-
-	var command CarCommand
-
-	switch userChoice {
-	case 1, 2:
-		command = &OpenCarCommand{carName: carName, car: car}
-	case 3, 4:
-		command = &CloseCarCommand{carName: carName, car: car}
-	}
-
-	// Create the car invoker
-	carInvoker := &CarInvoker{}
-	carInvoker.SetCommand(command)
-
-	carInvoker.ExecuteCommand()
-}
 
 func main() {
 
@@ -186,4 +103,89 @@ func main() {
 		fmt.Printf("\nYou don't have enough money!!\nYour cash - $%.2f.\n", cash)
 	}
 
+}
+
+// Using decorator pattern to add optional features to your car
+func decorator(myCar Car, choice int, cash float64) {
+	switch choice {
+	case 1:
+		myCarWithSunroof := NewSunroofDecorator(myCar)
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithSunroof.GetDescription(), myCarWithSunroof.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithSunroof.GetCost())	
+	case 2:
+		myCarWithAdvancedAudio := NewAdvancedAudioDecorator(myCar)
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithAdvancedAudio.GetDescription(), myCarWithAdvancedAudio.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithAdvancedAudio.GetCost())	
+	case 3:
+		myCarWithAirConditioner := NewAirConditionerDecorator(myCar)
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWithAirConditioner.GetDescription(), myCarWithAirConditioner.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWithAirConditioner.GetCost())	
+	case 4:
+		myCarWith_Sunroof_and_AdvancedAudio := NewAdvancedAudioDecorator(NewSunroofDecorator(myCar))
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_Sunroof_and_AdvancedAudio.GetDescription(), myCarWith_Sunroof_and_AdvancedAudio.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_Sunroof_and_AdvancedAudio.GetCost())	
+	case 5:
+		myCarWith_Sunroof_and_AirConditioner := NewSunroofDecorator(NewAirConditionerDecorator(myCar))
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_Sunroof_and_AirConditioner.GetDescription(), myCarWith_Sunroof_and_AirConditioner.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_Sunroof_and_AirConditioner.GetCost())	
+	case 6:
+		myCarWith_AdvancedAudio_and_AirConditioner := NewAdvancedAudioDecorator(NewAirConditionerDecorator(myCar))
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_AdvancedAudio_and_AirConditioner.GetDescription(), myCarWith_AdvancedAudio_and_AirConditioner.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_AdvancedAudio_and_AirConditioner.GetCost())	
+	case 7:
+		myCarWith_allOptions := NewSunroofDecorator(NewAdvancedAudioDecorator(NewAirConditionerDecorator(myCar)))
+		fmt.Printf("Car: %s\nPrice: $%.2f\n\n", myCarWith_allOptions.GetDescription(), myCarWith_allOptions.GetCost())
+		fmt.Printf("Your cash - $%.2f.\n", cash - myCarWith_allOptions.GetCost())	
+	default:
+		fmt.Println("undefined")			
+	}
+}
+
+// Choosing heart(двигатель) of your car. Using Factory method
+func chooseOfEngine(variant int){
+	switch variant {
+	case 1:
+		dvsFactory := EngineCarFactory{}
+		dvsCar := dvsFactory.CreateCar()
+		dvsCar.Drive()
+	case 2:
+		powerbankFactory := ElectricCarFactory{}
+		powerbank := powerbankFactory.CreateCar()
+		powerbank.Drive()
+	case 3:
+		hybridFactory := HybridCarFactory{}
+		hybridCar := hybridFactory.CreateCar()
+		hybridCar.Drive()
+	default:
+		fmt.Println("undefined")
+	}
+}
+// Using command pattern
+func InteractWithCar(userChoice int) {
+	// Create the receiver
+	car := &Cars{}
+
+	var carName string
+
+	switch userChoice {
+	case 1, 3:
+		carName = "Mechanical Key"
+	case 2, 4:
+		carName = "Remote Key"
+	}
+
+	var command CarCommand
+
+	switch userChoice {
+	case 1, 2:
+		command = &OpenCarCommand{carName: carName, car: car}
+	case 3, 4:
+		command = &CloseCarCommand{carName: carName, car: car}
+	}
+
+	// Create the car invoker
+	carInvoker := &CarInvoker{}
+	carInvoker.SetCommand(command)
+
+	carInvoker.ExecuteCommand()
 }
